@@ -1,0 +1,24 @@
+{
+  "name": "lol",
+  "version": "0.0.0",
+  "authors": [
+    "Aaron Gray <aaron@hellometa.com>"
+  ],
+  "description": "lol.js makes it easy to provide inline form validation and save progress in local storage incase of interruption.",
+  "main": "lol.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "forms",
+    "validation"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
