@@ -3,7 +3,7 @@
   var Field = {
     init: function( options, elem ) {
       var self = this;
-          
+
       self.elem = elem;
       self.$elem = $( elem );
       self.id = self.$elem.attr( 'id' );
@@ -18,7 +18,7 @@
     },
     handle: function() {
       var self = this;
-      
+
       self.$elem.on('blur', this.$elem.parent( 'form' ), function( e ) {
         if ( e.target.checkValidity() ) {
           console.log( 'valid' );
@@ -26,7 +26,7 @@
         } else {
           console.log( 'nope!' );
         }
-      });      
+      });
     }
   }
 
