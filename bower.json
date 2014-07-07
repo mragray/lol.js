@@ -1,16 +1,17 @@
 {
   "name": "lol",
+  "main": "index.js",
   "version": "0.0.0",
+  "homepage": "https://github.com/mragray/lol.js",
   "authors": [
     "Aaron Gray <aaron@hellometa.com>"
   ],
   "description": "lol.js makes it easy to provide inline form validation and save progress in local storage incase of interruption.",
-  "main": "lol.js",
   "moduleType": [
     "globals"
   ],
   "keywords": [
-    "forms",
+    "form",
     "validation"
   ],
   "license": "MIT",
