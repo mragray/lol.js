@@ -1,33 +1,34 @@
-var lol = function(field) {
-    var values = {
-      id: null,
-      message: null
-    };
+(function($, window, document, undefined){
 
-    for (var prop in values) {
-      if (values[prop] !== 'undefined') {
-        values[prop] = field[prop];
+  $.fn.lol = function( options ) {
+    return this.each(function(){
+      var self = this,
+          storedValue = localStorage.getItem(self.id);
+      
+      if (storedValue) {
+        $(self).val(storedValue);
       }
-    }
 
-    var $el = $('#' + values.id),
-        storedValue = localStorage.getItem(values.id);
-
-    // Set field value from local storage
-    if (storedValue) {
-      $el.val(storedValue);
-    }
-
-    // Set event listener to update local storage
-    $el.on('blur', function(e) {
-      if (e.target.checkValidity()) {
-        localStorage.setItem(values.id, event.target.value);
-      } else {
-        alert(values.message);
-      }
+      $(self).on('blur', $(self).parent('form'), function(e) {
+        if (e.target.checkValidity()) {
+          console.log('valid');
+          localStorage.setItem($(self).attr('id'), event.target.value);
+        } else {
+          console.log('nope!');
+        }
+      });
     });
-}
-window.lol = lol;
+  }
+  
+  $.fn.lol.fieldOptions = {
+    id: null,
+    message: null
+  }
 
-var info = {id: 'phoneNumber', message: 'Hey'};
-lol(info);
+  $.fn.lol.options = {
+    localStorage: true,
+    validClass: false,
+    invalideClass: false
+  }
+
+})(jQuery, window, document );
