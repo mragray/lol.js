@@ -1,22 +1,41 @@
 (function($, window, document, undefined){
 
-  $.fn.lol = function( options ) {
-    return this.each(function(){
-      var self = this,
-          storedValue = localStorage.getItem(self.id);
-      
-      if (storedValue) {
-        $(self).val(storedValue);
-      }
+  var Field = {
+    init: function( options, elem ) {
+      var self = this;
+          
+      self.elem = elem;
+      self.$elem = $( elem );
+      self.id = self.$elem.attr('id');
+    },
+    storage: function () {
+      var self = this;
 
-      $(self).on('blur', $(self).parent('form'), function(e) {
+      var storedValue = localStorage.getItem(self.id);
+      if (storedValue) {
+        self.$elem.val(storedValue);
+      }
+    },
+    handle: function() {
+      var self = this;
+      
+      self.$elem.on('blur', this.$elem.parent('form'), function(e) {
         if (e.target.checkValidity()) {
           console.log('valid');
-          localStorage.setItem($(self).attr('id'), event.target.value);
+          localStorage.setItem(self.id, event.target.value);
         } else {
           console.log('nope!');
         }
-      });
+      });      
+    }
+  }
+
+  $.fn.lol = function( options ) {
+    return this.each(function(){
+      var field = Object.create(Field);
+      field.init(options, this);
+      field.storage();
+      field.handle();
     });
   }
   
